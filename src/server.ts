@@ -64,3 +64,23 @@ import fs from "fs";
 		console.log(`press CTRL+C to stop server`);
 	});
 })();
+
+// app.get("/filteredimage", async (req, res) => {
+// 	const { image_url } = req.query;
+
+// 	if (!image_url) {
+// 		return res.status(404).json({ msg: "No url was passed" });
+// 	}
+
+// 	let imageFile = await filterImageFromURL(image_url);
+
+// 	return res.status(200).sendFile(imageFile, () => {
+// 		deleteLocalFiles([imageFile]);
+// 	});
+// });
+// const imagepath = await filterImageFromURL(image_url);
+// res.sendFile(imagepath);
+
+// setTimeout(() => {
+// 	deleteLocalFiles([imagepath]);
+// }, 1000);
