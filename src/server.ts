@@ -37,13 +37,19 @@ import fs from "fs";
 		if (!image_url) {
 			return res.status(404).json({ msg: "No url was passed" });
 		}
-		let imageFile = await filterImageFromURL(image_url);
 
-		console.log(imageFile);
+		try {
+			let imageFile = await filterImageFromURL(image_url);
 
-		return res.status(200).sendFile(imageFile, () => {
-			deleteLocalFiles([imageFile]);
-		});
+			console.log(imageFile);
+
+			return res.status(200).sendFile(imageFile, () => {
+				deleteLocalFiles([imageFile]);
+			});
+		} catch (error) {
+			return res.status(422).send("Unable to download the image");
+		}
+		// let image_url = res.status(200).json({ image_url: image_url });
 	});
 
 	// Root Endpoint
